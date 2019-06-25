@@ -1,0 +1,34 @@
+<!-- プロフィール編集 -->
+<div class="body">
+	<div class="container">
+		<div class="row">
+		<p id="notice"></p>
+<h2>User info</h2>
+<%= form_for(@user) do |f| %>
+<% if @user.errors.any? %>
+<div id="error_explanation" style="color: red;">
+  <h3> <%= @user.errors.count %>件のエラー(error)が発生しました。</h3>
+  <ul>
+  	<% @user.errors.full_messages.each do |message| %>
+  	<li> <%= message %> </li>
+  	<% end %>
+  </ul>
+</div>
+<% end %>
+<div class="form-group has-icon">
+<label for="user_name">Name</label>
+	<%= f.text_field :name %>
+</div>
+<div class="form-group has-icon">
+<label class="control-label sr-only" for="user_profile_image">Image</label>
+	<%= f.attachment_field :profile_image, placheholder: "Image", class: "user-edit-form" %>
+</div>
+<div class="form-group has-icon">
+<label for="user_introduction">Introduction</label>
+	<%= f.text_field :introduction %>
+</div>
+ <%= f.submit "Update User", class: "btn btn-default" %>
+<% end %>
+</div>
+</div>
+</div>
